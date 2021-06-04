@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "o8vVfpyL8WSh2K71YmN+o/JgkbjVkNBe7+5ptFg59BMMmQhthfpp7NS0Myxmw1G0jCRZMXIscK0+rUvJjwxYFQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Hp\\source\\repos\\BMI_calculator\\BMI_calculator\\BMI_calculator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Hp\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512"
+  ],
+  "logs": []
+}

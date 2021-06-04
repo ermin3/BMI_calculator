@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BMI_calculator.MainPage"
+             BackgroundColor="Black">
+
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="RadioButtonTemplate">
+            <Frame 
+                   BackgroundColor="Transparent"
+                   HasShadow="False"
+                   HeightRequest="50"
+                   WidthRequest="50"
+                   HorizontalOptions="Center"
+                   VerticalOptions="CenterAndExpand"
+                   Padding="0">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CheckedStates">
+                            <VisualState x:Name="Checked">
+                                <VisualState.Setters>
+                                    <Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="1" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Unchecked">
+                                <VisualState.Setters>
+                                    <Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="0" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+                <Grid Margin="4"
+                      WidthRequest="100">
+                    <Grid WidthRequest="18"
+                          HeightRequest="18"
+                          HorizontalOptions="End"
+                          VerticalOptions="Start">
+                        <Ellipse Stroke="Red"
+                                 Fill="Transparent"
+                                 WidthRequest="15"
+                                 HeightRequest="15"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" />
+                        <Ellipse x:Name="check"
+                                 Fill="red"
+                                 WidthRequest="9"
+                                 HeightRequest="9"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" 
+                                 />
+                    </Grid>
+                    <ContentPresenter />
+                </Grid>
+            </Frame>
+        </ControlTemplate>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="ControlTemplate"
+                    Value="{StaticResource RadioButtonTemplate}" />
+            <Setter Property="TextColor" Value="White"></Setter>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+            <Setter Property="FontFamily" Value="Pragati Narrow"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+
+        <Style TargetType="Picker">
+            <Setter Property="TextColor" Value="White"></Setter>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+            <Setter Property="FontFamily" Value="Pragati Narrow"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="ClearButtonVisibility" Value="WhileEditing"></Setter>
+            <Setter Property="WidthRequest" Value="150"></Setter>
+            <Setter Property="MaxLength" Value="3"></Setter>
+            <Setter Property="FontFamily" Value="Pragati Narrow"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="TextColor" Value="White"></Setter>
+            <Setter Property="VerticalOptions" Value="Center"></Setter>
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
+            <Setter Property="Keyboard" Value="Numeric"></Setter>
+            <Setter Property="ClearButtonVisibility" Value="WhileEditing"></Setter>
+            <Setter Property="Opacity" Value="0.7" ></Setter>
+            <Setter Property="BackgroundColor" Value="#2196F3"></Setter>
+            <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+            <Setter Property="PlaceholderColor" Value="White"></Setter>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
+            <Setter Property="FontFamily" Value="Pragati Narrow"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
+            <Setter Property="TextColor" Value="Black"></Setter>
+            <Setter Property="FontAttributes" Value="Bold"></Setter>
+        </Style>
+    </ContentPage.Resources>
+
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2.8*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".9*"/>
+            <ColumnDefinition Width=".7*"/>
+            <ColumnDefinition Width=".7*"/>
+            <ColumnDefinition Width=".9*"/>
+        </Grid.ColumnDefinitions>
+        <BoxView Color="#2196F3" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Opacity="0.2" Margin="10,5,10,0" />
+        <BoxView Color="#2196F3" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Opacity="0.2" Margin="10,5,10,0"/>
+        <BoxView Color="#2196F3" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Opacity="0.2" Margin="10,5,10,0" />
+        <BoxView Color="#2196F3" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Opacity="0.2" Margin="10,5,10,0"/>
+        <BoxView Color="#2196F3" Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="4" Opacity="0.2" Margin="10,5,10,0" />
+        <BoxView Color="#2196F3" Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="4" />
+
+        <Label Text="BMI" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" FontSize="30" TextColor="White"></Label>
+
+
+        <Picker x:Name="Gender" SelectedIndexChanged="OnEntryTextChanged"  Grid.Row="1" Grid.Column="1" HorizontalOptions="FillAndExpand" 
+                Title="Gender" TitleColor="White" Opacity="0.7" BackgroundColor="#2196F3">
+            <Picker.Items>
+                <x:String>Man</x:String>
+                <x:String>Woman</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <Entry x:Name="Age" Grid.Row="1" Grid.Column="2" Placeholder="Age" TextChanged="OnEntryTextChanged" ReturnType="Next"></Entry>
+
+        <RadioButton x:Name="button_cm"  Grid.Row="2" Grid.Column="0" Content="cm" GroupName="weight"  
+                    HorizontalOptions="End"  IsChecked="True" CheckedChanged="OnEntryTextChanged"></RadioButton>
+
+        <RadioButton x:Name="button_in" Grid.Row="2" Grid.Column="3" Content="in"   
+                     HorizontalOptions="Start"  GroupName="weight" CheckedChanged="OnEntryTextChanged"/>
+
+        <RadioButton x:Name="button_kg" Grid.Row="3" Grid.Column="0" Content="kg" GroupName="hight"
+                 HorizontalOptions="End" IsChecked="True" CheckedChanged="OnEntryTextChanged"></RadioButton>
+
+        <RadioButton  x:Name="button_lbs" Grid.Row="3" Grid.Column="3" Content="lbs" GroupName="hight" 
+                  HorizontalOptions="Start" CheckedChanged="OnEntryTextChanged" ></RadioButton>
+
+        <Entry  x:Name="EntryHight"  Grid.Column="1"  Grid.ColumnSpan="2" TextChanged="OnEntryTextChanged"  Grid.Row="2" 
+                Placeholder="Hight" ReturnType="Next"/>
+
+        <Entry x:Name="EntryWeight" Grid.Column="1" Grid.ColumnSpan="2" TextChanged="OnEntryTextChanged" Grid.Row="3" Placeholder="Weight"/>
+
+        <Label  x:Name="BMI_result" Text="BMI!" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" TextColor="Wheat" FontSize="20" Padding="10"/>
+        <Label  x:Name="CaloriesPD" Text="Calories per day!" Grid.Row="4" Grid.Column="0"  TextColor="Wheat" FontSize="15" Padding="10,0,0,0"/>
+        <Label  x:Name="Message" Text="You are PERFECT!" Grid.Row="4" Grid.Column="3"  TextColor="Wheat" FontSize="15" Padding="0,0,10,0"/>
+
+        <Image  Grid.Row="5" Grid.ColumnSpan="4" x:Name="slika" Source="picture1" Margin="10"></Image>
+
+
+    </Grid>
+
+
+
+</ContentPage>
